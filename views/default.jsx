@@ -1,6 +1,6 @@
-const react = require('react')
+const React = require('react')
 
-function def(html) {
+function Def(html) {
   return (
     <html>
         <head>
