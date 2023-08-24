@@ -1,11 +1,11 @@
 const React = require('react')
-const Def = require('./places/default')
+const Def = require('./default')
 
 function home () {
     return (
         <Def>
             <main>
-                <h1>HOME</h1>
+                <h1>REST-Rant</h1>
                 <div>
                 <img src="/images/chia-yogurt.jpg" alt="Chia Fruit Shake" />
                 <div>
