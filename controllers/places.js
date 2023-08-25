@@ -10,7 +10,6 @@ router.get('/', (req, res) => {
 });
 
 router.get('/:id', (req, res) => {
-  console.log('Reached the show route'); // A
   let id = Number(req.params.id)
   if (isNaN(id)) {
     res.render('error404')
@@ -19,7 +18,7 @@ router.get('/:id', (req, res) => {
     res.render('error404')
   }
   else {
-    res.render('places/show', { place: places[id] });
+    res.render('places/show', { place: places[id], id })
   }
 })
 
@@ -37,5 +36,21 @@ router.post('/', (req, res) => {
   places.push(req.body);
   res.redirect('/places');
 });
+
+
+router.delete('/:id', (req, res) => {
+  let id = Number(req.params.id)
+  if (isNaN(id)) {
+    res.render('error404')
+  }
+  else if (!places[id]) {
+    res.render('error404')
+  }
+  else {
+    places.splice(id, 1)
+    res.redirect('/places')
+  }
+})
+
 
 module.exports = router;
