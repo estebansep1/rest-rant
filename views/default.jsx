@@ -9,18 +9,20 @@ function Def (html) {
                 <link rel="stylesheet" href="../style.css"/>
             </head>
             <body>
-                <nav>
-                    <ul>
-                        <li>
-                            <a href="/">Home</a>
-                        </li>
-                        <li>
-                            <a href="/places">Places</a>
-                        </li>
-                        <li>
-                            <a href="/places/new">Add Place</a>
-                        </li>
-                    </ul>
+                <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
+                    <div className="container">
+                        <ul className="navbar-nav mx-auto">
+                            <li className="nav-item">
+                                <a className="nav-link text-decoration-none" href="/">Home</a>
+                            </li>
+                            <li className="nav-item">
+                                <a className="nav-link text-decoration-none" href="/places">Places</a>
+                            </li>
+                            <li className="nav-item">
+                                <a className="nav-link text-decoration-none" href="/places/new">Add Place</a>
+                            </li>
+                        </ul>
+                    </div>
                 </nav>
                 {html.children}
             </body>
@@ -35,4 +37,4 @@ function Def (html) {
     )
 }
 
-module.exports = Def
+module.exports = Def;
