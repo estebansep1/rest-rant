@@ -9,6 +9,20 @@ router.get('/', (req, res) => {
   res.render('places/index', { places: places });
 });
 
+router.get('/:id', (req, res) => {
+  console.log('Reached the show route'); // A
+  let id = Number(req.params.id)
+  if (isNaN(id)) {
+    res.render('error404')
+  }
+  else if (!places[id]) {
+    res.render('error404')
+  }
+  else {
+    res.render('places/show', { place: places[id] });
+  }
+})
+
 router.post('/', (req, res) => {
   console.log(req.body);
   if (!req.body.pic) {
