@@ -1,5 +1,5 @@
 const React = require('react')
-const Def = require('../default.jsx')
+const Def = require('../defaultjsx')
 
 function edit_form(data) {
     return (
@@ -7,7 +7,6 @@ function edit_form(data) {
             <main>
                 <h1>Edit Place</h1>
                 <form method="POST" action={`/places/${data.place.id}?_method=PUT`}>
-                    {/* Fields on the same row */}
                     <div className="row">
                         <div className="col-sm-6">
                             <div className="form-group">
@@ -22,7 +21,6 @@ function edit_form(data) {
                             </div>
                         </div>
                     </div>
-                    {/* Fields on the same row */}
                     <div className="row">
                         <div className="col-sm-6">
                             <div className="form-group">
