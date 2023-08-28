@@ -2,8 +2,10 @@ const React = require('react');
 const Def = require('../default.jsx');
 
 function edit_form(data) {
+    console.log('Data in edit_form:', data)
     return (
         <Def>
+            <link rel="stylesheet" href="/style.css" />
             <main>
                 <h1>Edit Place</h1>
                 <form method="POST" action={`/places/${data.place.id}?_method=PUT`} className="row g-3">
@@ -27,8 +29,8 @@ function edit_form(data) {
                         <label htmlFor="cuisines" className="form-label">Cuisines</label>
                         <input type="text" className="form-control" id="cuisines" name="cuisines" value={data.place.cuisines} required />
                     </div>
-                    <div className="col-12">
-                        <button type="submit" className="btn btn-primary">Update Place</button>
+                    <div className="col-md-12">
+                    <input className="btn btn-primary" type="submit" value="Update Place" onChange={() => {}} />
                     </div>
                 </form>
             </main>
