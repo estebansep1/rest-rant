@@ -30,7 +30,7 @@ function edit_form(data) {
                         <input type="text" className="form-control" id="cuisines" name="cuisines" value={data.place.cuisines} required />
                     </div>
                     <div className="col-md-12">
-                    <input className="btn btn-primary" type="submit" value="Update Place" onChange={() => {}} />
+                    <input className="btn btn-primary" type="submit" value="Update Place" />
                     </div>
                 </form>
             </main>

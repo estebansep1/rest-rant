@@ -13,4 +13,4 @@ module.exports = [{
     state: 'AZ',
     cuisines: 'Coffee, Bakery',
     pic: '/images/coffee.jpg'
-}]
+},]
