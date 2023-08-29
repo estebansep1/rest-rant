@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const places = require('../models/places.js');
+const places = require('../models/places');
 
 router.get('/', (req, res) => {
   res.render('places/index', { places: places });
@@ -61,7 +61,7 @@ router.put('/:id', (req, res) => {
       }
 
       places[id] = req.body
-      res.redirect(`/places/${id}`)
+      res.redirect(`/places/${id}`);
   }
 })
 
@@ -88,7 +88,7 @@ router.get('/:id/edit', (req, res) => {
       res.render('error404')
   }
   else {
-    res.render('places/edit', { place: places[id] })
+    res.render('places/edit', { place: places[id], index: id });
   }
 })
 
