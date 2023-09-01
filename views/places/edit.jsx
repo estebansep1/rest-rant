@@ -9,7 +9,7 @@ function edit_form(data) {
             <link rel="stylesheet" href="/style.css" />
             <main>
                 <h1>Edit Place</h1>
-                <form method="POST" action={`/places/${data.index}?_method=PUT`} className="row g-3">
+                <form method="POST" action={`/places/${data.place.id}?_method=PUT`} className="row g-3">
                     <div className="col-md-6">
                         <label htmlFor="name" className="form-label">Place Name</label>
                         <input type="text" className="form-control" id="name" name="name" value={data.place.name} required />

@@ -43,59 +43,47 @@ router.get('/:id', (req, res) => {
 
 
 router.put('/:id', (req, res) => {
-  let id = Number(req.params.id)
-  console.log('PUT request recieved for place ID:', req.params.id)
-  console.log('recieved id:', id)
-  console.log('Request Body:', req.body)
-  if (isNaN(id)) {
-      res.render('error404')
-  }
-  else if (!places[id]) {
-      res.render('error404')
-  }
-  else {
-      if (!req.body.pic) {
-          req.body.pic = 'http://placekitten.com/400/400'
-      }
-      if (!req.body.city) {
-          req.body.city = 'Anytown'
-      }
-      if (!req.body.state) {
-          req.body.state = 'USA'
-      }
+  const id = req.params.id;
+  const updateData = {
+    pic: req.body.pic || 'http://placekitten.com/400/400',
+    city: req.body.city || 'Anytown',
+    state: req.body.state || 'USA'
+  };
 
-      places[id] = req.body
+  db.Place.findByIdAndUpdate(id, updateData)
+    .then(() => {
       res.redirect(`/places/${id}`);
-  }
-})
-
-router.delete('/:id', (req, res) => {
-  let id = Number(req.params.id)
-  if (isNaN(id)) {
-    res.render('error404')
-  }
-  else if (!places[id]) {
-    res.render('error404')
-  }
-  else {
-    places.splice(id, 1)
-    res.redirect('/places')
-  }
-})
+    })
+    .catch((err) => {
+      console.log('err', err);
+      res.render('error404');
+    });
+});
 
 
-router.get('/:id/edit', (req, res) => {
-  let id = Number(req.params.id)
-  if (isNaN(id)) {
-      res.render('error404')
-  }
-  else if (!places[id]) {
-      res.render('error404')
-  }
-  else {
-    res.render('places/edit', { place: places[id], index: id });
-  }
-})
+router.delete("/:id", (req, res) => {
+  db.Place.findByIdAndDelete(req.params.id)
+    .then((place) => {
+      res.redirect("/places");
+    })
+    .catch((err) => {
+      console.log("err", err);
+      res.render("error404");
+    });
+});
+
+
+router.get("/:id/edit", (req, res) => {
+  db.Place.findById(req.params.id)
+    .then((place) => {
+      res.render("places/edit", { place });
+    })
+    .catch((err) => {
+      res.render("error404");
+    });
+});
+
+
 router.post('/:id/rant', (req, res) => {
   res.send('GET /places/:id/rant stub')
 })
@@ -105,7 +93,3 @@ router.delete('/:id/rant/:rantId', (req, res) => {
 })
 
 module.exports = router
-
-
-
-module.exports = router;
