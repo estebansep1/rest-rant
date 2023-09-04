@@ -85,10 +85,35 @@ main {
   display: flex;
   gap: 10px;
   margin-left: 210px;
-  padding: 75px
+  padding: 75px;
 }
 
 .btn-warning:hover {
   transition: 0.2s;
   opacity: 0.9;
+}
+
+.home-btn .btn-primary{
+  margin : 20px;
+}
+
+form {
+  max-width: 800px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  font-weight: bold;
+}
+
+.form-control {
+  width: 100%;
+}
+
+.form-container .btn-primary {
+  display: block;
+  margin: 0 auto;
 }

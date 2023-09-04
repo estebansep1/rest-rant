@@ -17,7 +17,7 @@ function new_form (data) {
             <main>
                 <h1>Add a New Place</h1>
                 {message}
-                <form method="POST" action="/places">
+                <form className="form-container" method="POST" action="/places">
                 <div className="row">    
                 <div className="form-group col-md-6">
                     <label htmlFor="name">Place Name</label>
