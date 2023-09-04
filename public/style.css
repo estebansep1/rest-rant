@@ -80,3 +80,15 @@ main {
   color: #ffffff; 
   transition: color 0.3s;
 }
+
+.btn-container {
+  display: flex;
+  gap: 10px;
+  margin-left: 210px;
+  padding: 75px
+}
+
+.btn-warning:hover {
+  transition: 0.2s;
+  opacity: 0.9;
+}
