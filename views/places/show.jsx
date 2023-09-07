@@ -1,7 +1,26 @@
 const React = require('react');
 const Def = require('../default');
 
-function show(data) {
+function show (data) {
+    let comments = (
+      <h3 className="inactive">
+        No comments yet!
+      </h3>
+    )
+    if (data.place.comments.length) {
+      comments = data.place.comments.map(c => {
+        return (
+          <div className="border">
+            <h2 className="rant">{c.rant ? 'Rant! ðŸ˜¡' : 'Rave! ðŸ˜»'}</h2>
+            <h4>{c.content}</h4>
+            <h3>
+              <stong>- {c.author}</stong>
+            </h3>
+            <h4>Rating: {c.stars}</h4>
+          </div>
+        )
+      })
+    }
     return (
         <Def>
             <main>
@@ -30,7 +49,26 @@ function show(data) {
                 </div>
                 <hr />
                 <h2>Comments</h2>
-                <p>No comments yet!</p>
+                {comments}
+                <form method="POST" action={`/places/${data.place.id}/comment`}>
+                    <div className="form-group">
+                        <label for="author">Author:</label>
+                        <input type="text" className="form-control" id="author" name="author" required />
+                    </div>
+                    <div className="form-group">
+                        <label for="starRating">Content:</label>
+                        <textarea className="form-control" id="content" name="content" rows="4" required></textarea>
+                    </div>
+                    <div className="form-group">
+                        <label for="starRating">Star Rating:</label>
+                        <input type="number" className="form-control" id="starRating" name="stars" step="0.5" min="1" max="5" required></input>
+                    </div>
+                    <div className="form-check">
+                        <input type="checkbox" className="fomr-check-input" id="rant" name="rant" />
+                        <label className="form-check-label" for="rant">Rant</label>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
             </main>
         </Def>
     );
