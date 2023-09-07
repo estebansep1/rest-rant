@@ -11,7 +11,7 @@ function show (data) {
       comments = data.place.comments.map(c => {
         return (
           <div className="border">
-            <h2 className="rant">{c.rant ? 'Rant! ðŸ˜¡' : 'Rave! ðŸ˜»'}</h2>
+            <h2 className="rant">{c.rant ? 'Rant! 🤬' : 'Rave! 😁'}</h2>
             <h4>{c.content}</h4>
             <h3>
               <stong>- {c.author}</stong>
@@ -48,27 +48,30 @@ function show (data) {
                     </div>
                 </div>
                 <hr />
-                <h2>Comments</h2>
+                <h2 className="comment-title">Comments</h2>
                 {comments}
+                <h2 className="comment-section">Got a comment or concern? Let us know!</h2>
+                <div className="form-container">
                 <form method="POST" action={`/places/${data.place.id}/comment`}>
                     <div className="form-group">
-                        <label for="author">Author:</label>
+                        <label for="author">Author</label>
                         <input type="text" className="form-control" id="author" name="author" required />
                     </div>
                     <div className="form-group">
-                        <label for="starRating">Content:</label>
+                        <label for="starRating">Content</label>
                         <textarea className="form-control" id="content" name="content" rows="4" required></textarea>
                     </div>
                     <div className="form-group">
-                        <label for="starRating">Star Rating:</label>
-                        <input type="number" className="form-control" id="starRating" name="stars" step="0.5" min="1" max="5" required></input>
+                    <label htmlFor="customRange1" className="form-label">Star Rating</label>
+                    <input type="range" className="form-range" id="customRange1" name="stars" step="0.5" min="1" max="5" required />
                     </div>
                     <div className="form-check">
                         <input type="checkbox" className="fomr-check-input" id="rant" name="rant" />
-                        <label className="form-check-label" for="rant">Rant</label>
+                        <label className="form-check-label" for="rant">Rant?</label>
                     </div>
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
+                </div>
             </main>
         </Def>
     );
