@@ -60,7 +60,7 @@ router.put('/:id', (req, res) => {
     city: req.body.city || 'Anytown',
     state: req.body.state || 'USA'
   };
-
+  
   db.Place.findByIdAndUpdate(id, updateData)
     .then(() => {
       res.redirect(`/places/${id}`);
