@@ -9,7 +9,7 @@ function edit_form(data) {
             <link rel="stylesheet" href="/style.css" />
             <main>
                 <h1>Edit Place</h1>
-                <form method="POST" action={`/places/${data.place.id}?_method=PUT`} className="row g-3">
+                <form method="POST" action={`/places/${data.place._id}?_method=PUT`} className="row g-3">
                     <div className="row">
                         <div className="form-group col-sm-4">
                             <label htmlFor="founded">Founded</label>

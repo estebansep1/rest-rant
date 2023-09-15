@@ -55,13 +55,7 @@ router.get('/:id', (req, res) => {
 
 router.put('/:id', (req, res) => {
   const id = req.params.id;
-  const updateData = {
-    pic: req.body.pic || 'http://placekitten.com/400/400',
-    city: req.body.city || 'Anytown',
-    state: req.body.state || 'USA'
-  };
-  
-  db.Place.findByIdAndUpdate(id, updateData)
+  db.Place.findByIdAndUpdate(id, req.body)
     .then(() => {
       res.redirect(`/places/${id}`);
     })
